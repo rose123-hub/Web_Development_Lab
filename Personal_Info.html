@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Personal Profile</title>
+
+
+<style>
+*{
+
+ 
+
+margin:0; padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+
+body{
+margin:10px; border:2px solid black;
+}
+
+
+header{
+background:#4CAF50; color:white;
+text-align:center; padding:20px;
+}
+
+
+nav{
+display:flex;
+justify-content:space-around; align-items:center; background:#333; padding:10px;
+}
+
+ 
+
+
+
+nav a{
+color:white;
+text-decoration:none; font-weight:bold;
+}
+
+
+nav input{ padding:5px;
+}
+
+
+section{
+padding:20px;
+}
+
+
+.skills-video{ display:flex;
+justify-content:space-between; gap:20px;
+}
+
+
+.skills{
+width:40%;
+}
+
+
+ 
+
+.skills h3{
+margin-top:10px;
+}
+
+
+.skills progress{ width:100%; height:20px;
+}
+
+
+.video{
+width:55%;
+}
+
+
+video{
+width:100%;
+}
+
+
+.card{
+border:1px solid gray; padding:15px;
+margin-top:20px;
+}
+
+
+.forms{
+display:flex;
+
+ 
+
+gap:20px;
+}
+
+
+fieldset{ width:50%; padding:20px;
+}
+
+
+label{
+display:inline-block; width:130px;
+}
+
+
+input,textarea,select{ padding:6px;
+}
+
+
+.media{
+display:flex; gap:20px;
+}
+
+
+.media div{ width:50%;
+}
+
+ 
+
+
+
+iframe{
+width:100%; height:300px;
+}
+
+
+footer{
+background:#333; color:white;
+text-align:center; padding:15px; margin-top:20px;
+}
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<header>
+<h1>ROSE JOHN</h1>
+<h3>Personal Profile</h3>
+</header>
+
+
+<nav>
+
+ 
+
+<a href="#academics">Academics</a>
+<a href="#achievements">Achievements</a>
+<a href="#events">Events</a>
+<input type="search" placeholder="Search">
+</nav>
+
+
+<section class="skills-video">
+
+
+<div class="skills">
+
+
+<h2>Skills</h2>
+
+
+<h3>Python</h3>
+<progress value="90" max="100"></progress>
+
+
+<h3>Java</h3>
+<progress value="85" max="100"></progress>
+
+
+<h3>HTML</h3>
+<progress value="95" max="100"></progress>
+
+
+<h3>CSS</h3>
+<progress value="90" max="100"></progress>
+
+
+<h3>JavaScript</h3>
+
+ 
+
+<progress value="80" max="100"></progress>
+
+
+</div>
+
+
+<div class="video">
+
+
+<h2>Video</h2>
+
+
+<video controls>
+<source src="video.mp4" type="video/mp4"> Your browser does not support the video tag.
+</video>
+
+
+</div>
+
+
+</section>
+
+
+<section id="academics" class="card">
+
+
+<h2>Academics</h2>
+
+
+<p><b>Name:</b> Rose John</p>
+
+
+<p><b>Register Number:</b> URK24CS1176</p>
+
+
+ 
+
+<p><b>Department:</b> Computer Science and Engineering</p>
+
+
+<p><b>College:</b> Karunya Institute of Technology and Sciences</p>
+
+
+<p><b>CGPA:</b> 8.2</p>
+
+
+</section>
+
+
+<section id="achievements" class="card">
+
+
+<h2>Achievements</h2>
+
+
+<ul>
+<li>Scored 8.2  CGPA in Semester Examination.</li>
+<li>Completed Python Programming Certification.</li>
+<li>Participated in AI Workshop.</li>
+<li>Completed Web Technology Lab.</li>
+<li>Winner of Google Hackthon .</li>
+<li>Participant in NIVIDA seminar.</li>
+</ul>
+
+
+</section>
+
+
+<section id="events" class="card">
+
+
+<h2>Events</h2>
+
+ 
+
+
+
+<ul>
+<li>Python Workshop</li>
+<li>Web Technology Lab</li>
+<li>AI Seminar</li>
+<li>Coding Contest</li>
+</ul>
+
+
+</section>
+
+
+<section class="forms">
+
+
+<!-- Personal Information -->
+<fieldset>
+
+
+<legend><h2>Personal Information</h2></legend>
+
+
+<form>
+
+
+<label>User Name:</label>
+<input type="text" placeholder="Enter your name" required>
+
+
+<br><br>
+
+
+<label>Password:</label>
+
+ 
+
+<input type="password" placeholder="Enter password" required>
+
+
+<br><br>
+
+
+<label>Register No:</label>
+<input type="text" value="URK24CS1176">
+
+
+<br><br>
+
+
+<label>Age:</label>
+<input type="number" value="19">
+
+
+<br><br>
+
+
+<label>Gender:</label>
+
+
+<input type="radio" name="gender"> Male
+<input type="radio" name="gender"> Female
+
+
+<br><br>
+
+
+<label>Date of Birth:</label>
+<input type="date">
+
+
+<br><br>
+
+ 
+
+
+
+<label>Favourite Color:</label>
+<input type="color">
+
+
+<br><br>
+
+
+<label>Hobbies:</label>
+<input type="text" placeholder="Reading, Coding">
+
+
+</form>
+
+
+</fieldset>
+
+
+<!-- Contact Information -->
+<fieldset>
+
+
+<legend><h2>Contact Information</h2></legend>
+
+
+<form>
+
+
+<label>Address:</label>
+<textarea rows="4" cols="25"></textarea>
+
+
+<br><br>
+
+
+ 
+
+<label>State:</label>
+
+
+<select>
+<option>Select</option>
+<option>Tamil Nadu</option>
+<option>Kerala</option>
+<option>Karnataka</option>
+<option>Andhra Pradesh</option>
+</select>
+
+
+<br><br>
+
+
+<label>Zip Code:</label>
+<input type="text" placeholder="641114">
+
+
+<br><br>
+
+
+<label>Mobile:</label>
+<input type="tel" placeholder="9876543210">
+
+
+<br><br>
+
+
+<label>Email:</label>
+<input type="email" placeholder="rosejohn@gmail.com">
+
+
+ 
+
+<br><br>
+
+
+<label>Website:</label>
+<input type="url" placeholder="https://example.com">
+
+
+<br><br>
+
+
+<input type="checkbox"> I verify my details.
+
+<br><br>
+
+
+<input type="submit" value="Submit">
+
+
+</form>
+
+
+</fieldset>
+
+
+</section>
+
+
+<!-- Media Section -->
+
+
+<section class="media">
+
+
+<div>
+
+ 
+
+
+
+<h2>Audio</h2>
+
+
+<audio controls>
+
+
+<source src="audio.mp3" type="audio/mpeg">
+
+
+Your browser does not support the audio element.
+
+
+</audio>
+
+
+</div>
+
+
+<div>
+
+
+<h2>Document</h2>
+
+
+<div style="border:1px solid #999;padding:15px;height:300px;overflow:auto;">
+
+
+<h3>Resume</h3>
+
+
+<p><b>Name:</b> Rose John</p>
+
+
+<p><b>Department:</b> Computer Science and Engineering</p>
+
+
+ 
+
+<p><b>Register No:</b> URK24CS1176</p>
+
+
+<p><b>Skills:</b></p>
+
+
+<ul>
+<li>Python</li>
+<li>Java</li>
+<li>HTML & CSS</li>
+<li>JavaScript</li>
+<li>Problem Solving</li>
+</ul>
+
+
+<p><b>Objective:</b></p>
+
+
+<p>
+To build a successful career in software development by continuously learning new technologies and applying my programming skills effectively.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+ 
+
+
+
+<!-- Google Map -->
+
+
+<section>
+
+
+<h2>My Location</h2>
+
+
+<iframe
+src="https://www.google.com/maps?q=Karunya+University,+Coimbatore&output=embed" height="350">
+</iframe>
+
+
+</section>
+
+
+<!-- Footer -->
+
+
+<footer>
+
+
+<h3>Address</h3>
+
+
+<p>
+Karunya Institute of Technology and Sciences<br> Coimbatore - 641114<br><br>
+
+© 2026 | URK24CS1176 | Web Technology Lab
+
+ 
+
+</p>
+
+
+</footer>
+
+
+</body>
+</html>
