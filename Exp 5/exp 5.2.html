@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Flip</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f7fa;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            width: 555px;
+            min-height: 430px;
+            background: white;
+
+            margin-top: 60px;
+            padding: 38px 30px;
+
+            border: 1px solid #e5e9ed;
+            border-radius: 10px;
+
+            text-align: center;
+
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        h1 {
+            margin: 0 0 22px;
+            color: #202b36;
+            font-size: 27px;
+            font-weight: 700;
+        }
+
+        .coin-container {
+            width: 155px;
+            height: 155px;
+
+            margin: 0 auto 25px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border: 3px solid #e8edf1;
+            border-radius: 50%;
+        }
+
+        .coin {
+            width: 130px;
+            height: 130px;
+
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: radial-gradient(
+                circle at 35% 30%,
+                #d9d5c8,
+                #aaa797 55%,
+                #777568
+            );
+
+            border: 3px solid #77766d;
+
+            color: #44433e;
+            font-weight: bold;
+
+            box-shadow:
+                inset 3px 3px 5px rgba(255,255,255,0.5),
+                inset -4px -4px 7px rgba(0,0,0,0.25),
+                2px 3px 5px rgba(0,0,0,0.25);
+
+            transition: transform 0.6s ease;
+        }
+
+        .coin-face {
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.2;
+        }
+
+        .coin-face .letter {
+            font-size: 45px;
+            font-family: Georgia, serif;
+            font-weight: bold;
+        }
+
+        .coin-face small {
+            display: block;
+            font-size: 8px;
+            margin-top: 2px;
+        }
+
+        .flip-animation {
+            animation: flip 0.7s ease;
+        }
+
+        @keyframes flip {
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            50% {
+                transform: rotateY(900deg);
+            }
+
+            100% {
+                transform: rotateY(1800deg);
+            }
+        }
+
+        button {
+            border: none;
+            border-radius: 7px;
+
+            background-color: #3d789a;
+            color: white;
+
+            font-size: 18px;
+            padding: 11px 26px;
+
+            cursor: pointer;
+
+            transition: background-color 0.2s ease,
+                        transform 0.1s ease;
+        }
+
+        button:hover {
+            background-color: #326984;
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        .results {
+            margin-top: 24px;
+
+            color: #283744;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        .results div {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Heads or Tails?</h1>
+
+        <div class="coin-container">
+            <div class="coin" id="coin">
+
+                <div class="coin-face">
+                    <div class="letter">H</div>
+                    <small>HEADS</small>
+                </div>
+
+            </div>
+        </div>
+
+        <button onclick="flipCoin()">Flip!</button>
+
+        <div class="results">
+            <div>Heads Total: <span id="heads">4</span></div>
+            <div>Tails Total: <span id="tails">2</span></div>
+        </div>
+
+    </div>
+
+    <script>
+        let heads = 4;
+        let tails = 2;
+
+        function flipCoin() {
+
+            const coin = document.getElementById("coin");
+
+            // Remove previous animation
+            coin.classList.remove("flip-animation");
+
+            // Force browser to restart animation
+            void coin.offsetWidth;
+
+            // Add animation
+            coin.classList.add("flip-animation");
+
+            // Random result
+            const result = Math.random() < 0.5 ? "heads" : "tails";
+
+            setTimeout(() => {
+
+                if (result === "heads") {
+
+                    heads++;
+
+                    coin.innerHTML = `
+                        <div class="coin-face">
+                            <div class="letter">H</div>
+                            <small>HEADS</small>
+                        </div>
+                    `;
+
+                } else {
+
+                    tails++;
+
+                    coin.innerHTML = `
+                        <div class="coin-face">
+                            <div class="letter">T</div>
+                            <small>TAILS</small>
+                        </div>
+                    `;
+                }
+
+                document.getElementById("heads").textContent = heads;
+                document.getElementById("tails").textContent = tails;
+
+            }, 350);
+        }
+    </script>
+
+</body>
+</html>
+```

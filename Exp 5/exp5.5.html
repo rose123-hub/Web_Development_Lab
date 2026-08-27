@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cake Order Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        .container {
+            width: 480px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px 35px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px #ddd;
+        }
+
+        h2 {
+            color: #172b4d;
+            margin-bottom: 25px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+            color: #333;
+        }
+
+        input[type="number"] {
+            width: 55px;
+            padding: 7px;
+            text-align: center;
+            border: 1px solid #dfe4ea;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .tip {
+            margin: 15px 0;
+        }
+
+        .tip label {
+            margin-right: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #397495;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2f637f;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 15px;
+        }
+
+        .result span {
+            font-weight: bold;
+            color: #172b4d;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Cake Order Form</h2>
+
+        <div class="row">
+            <label># of 1/2kg Cakes</label>
+            <input type="number" id="halfKg" value="3" min="0">
+        </div>
+
+        <div class="row">
+            <label># of 1kg Cakes</label>
+            <input type="number" id="oneKg" value="1" min="0">
+        </div>
+
+        <div class="row">
+            <label># of 2kg Cakes</label>
+            <input type="number" id="twoKg" value="2" min="0">
+        </div>
+
+        <div class="tip">
+            <label>Tip:</label>
+
+            <label>
+                <input type="radio" name="tip" value="10">
+                10%
+            </label>
+
+            <label>
+                <input type="radio" name="tip" value="15" checked>
+                15%
+            </label>
+
+            <label>
+                <input type="radio" name="tip" value="20">
+                20%
+            </label>
+        </div>
+
+        <button onclick="calculateOrder()">
+            Calculate Order
+        </button>
+
+        <div class="result">
+            Cost of order: <span>Rs. <span id="cost">1629.55</span></span>
+        </div>
+
+    </div>
+
+    <script>
+        function calculateOrder() {
+
+            let halfKg = parseInt(document.getElementById("halfKg").value);
+            let oneKg = parseInt(document.getElementById("oneKg").value);
+            let twoKg = parseInt(document.getElementById("twoKg").value);
+
+            let tip = document.querySelector(
+                'input[name="tip"]:checked'
+            ).value;
+
+            // Cake prices
+            let halfKgPrice = 149;
+            let oneKgPrice = 320;
+            let twoKgPrice = 325;
+
+            // Calculate subtotal
+            let subtotal =
+                (halfKg * halfKgPrice) +
+                (oneKg * oneKgPrice) +
+                (twoKg * twoKgPrice);
+
+            // Calculate tip
+            let tipAmount = subtotal * (tip / 100);
+
+            // Total cost
+            let total = subtotal + tipAmount;
+
+            document.getElementById("cost").innerText =
+                total.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f7fa;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            width: 477px;
+            background-color: white;
+
+            margin-top: 60px;
+            padding: 27px;
+
+            border: 1px solid #e5e9ed;
+            border-radius: 8px;
+
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        h1 {
+            margin: 0 0 12px 0;
+
+            font-size: 20px;
+            color: #202b36;
+        }
+
+        .convert-row {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            color: #34404a;
+            font-size: 14px;
+
+            white-space: nowrap;
+        }
+
+        input {
+            width: 85px;
+            height: 30px;
+
+            padding: 6px 9px;
+
+            border: 1px solid #dfe5e9;
+            border-radius: 5px;
+
+            font-size: 14px;
+        }
+
+        select {
+            height: 30px;
+
+            padding: 4px 9px;
+
+            border: 1px solid #dfe5e9;
+            border-radius: 5px;
+
+            background-color: white;
+
+            font-size: 14px;
+            color: #202b36;
+        }
+
+        #fromCurrency {
+            width: 102px;
+        }
+
+        #toCurrency {
+            width: 102px;
+        }
+
+        button {
+            margin-top: 7px;
+
+            padding: 7px 16px;
+
+            border: none;
+            border-radius: 5px;
+
+            background-color: #3d789a;
+            color: white;
+
+            font-size: 13px;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #326984;
+        }
+
+        .result {
+            margin-top: 15px;
+
+            color: #34404a;
+            font-size: 14px;
+        }
+
+        .result span {
+            font-weight: bold;
+            color: #3d789a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Currency Convertor</h1>
+
+        <div class="convert-row">
+
+            <span>Convert</span>
+
+            <input
+                type="number"
+                id="amount"
+                value="400"
+            >
+
+            <select id="fromCurrency">
+                <option value="INR">Indian Rupee</option>
+                <option value="USD">US Dollar</option>
+                <option value="EUR">Euro</option>
+                <option value="GBP">British Pound</option>
+            </select>
+
+            <span>to</span>
+
+            <select id="toCurrency">
+                <option value="USD">US Dollar</option>
+                <option value="INR">Indian Rupee</option>
+                <option value="EUR">Euro</option>
+                <option value="GBP">British Pound</option>
+            </select>
+
+        </div>
+
+        <button onclick="calculate()">Calculate</button>
+
+        <div class="result">
+            Result: <span id="result">6.00</span>
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function calculate() {
+
+            const amount = parseFloat(
+                document.getElementById("amount").value
+            );
+
+            const from = document.getElementById("fromCurrency").value;
+            const to = document.getElementById("toCurrency").value;
+
+            if (isNaN(amount)) {
+                document.getElementById("result").textContent = "0.00";
+                return;
+            }
+
+            /*
+                Sample exchange rates.
+
+                These are fixed rates for this simple
+                HTML/JavaScript project.
+            */
+
+            const rates = {
+
+                INR: {
+                    USD: 0.015,
+                    EUR: 0.014,
+                    GBP: 0.012,
+                    INR: 1
+                },
+
+                USD: {
+                    INR: 83.33,
+                    EUR: 0.92,
+                    GBP: 0.79,
+                    USD: 1
+                },
+
+                EUR: {
+                    INR: 90.91,
+                    USD: 1.09,
+                    GBP: 0.86,
+                    EUR: 1
+                },
+
+                GBP: {
+                    INR: 105.26,
+                    USD: 1.27,
+                    EUR: 1.16,
+                    GBP: 1
+                }
+            };
+
+            const convertedAmount =
+                amount * rates[from][to];
+
+            document.getElementById("result").textContent =
+                convertedAmount.toFixed(2);
+        }
+
+    </script>
+
+</body>
+</html>
+```

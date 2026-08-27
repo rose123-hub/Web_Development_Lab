@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Farm</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fa;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            width: 630px;
+            margin-top: 50px;
+            padding: 32px 35px;
+
+            background: white;
+            border: 1px solid #e5e9ed;
+            border-radius: 9px;
+
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        h1 {
+            margin: 0 0 15px;
+
+            font-size: 22px;
+            color: #202b36;
+        }
+
+        .controls {
+            display: flex;
+            align-items: flex-end;
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            color: #7a8188;
+        }
+
+        input {
+            width: 86px;
+            height: 38px;
+
+            padding: 8px 10px;
+
+            border: 1px solid #dfe5e9;
+            border-radius: 6px;
+
+            font-size: 16px;
+            color: #333;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3d789a;
+        }
+
+        button {
+            height: 38px;
+
+            padding: 0 20px;
+
+            border: none;
+            border-radius: 6px;
+
+            background: #3d789a;
+            color: white;
+
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #326984;
+        }
+
+        .garden {
+            display: grid;
+            gap: 6px;
+
+            width: max-content;
+            max-width: 100%;
+        }
+
+        .fruit {
+            width: 86px;
+            height: 84px;
+
+            border-radius: 7px;
+
+            background-size: cover;
+            background-position: center;
+
+            border: 1px solid #e5e5e5;
+        }
+
+        .apple {
+            background-image: url(
+                "apple.png"
+            );
+        }
+
+        .orange {
+            background-image: url(
+               "orange.png"
+            );
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                width: 95%;
+            }
+
+            .fruit {
+                width: 65px;
+                height: 65px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Fruit Farm</h1>
+
+        <div class="controls">
+
+            <div class="input-group">
+                <label for="rows">Rows</label>
+                <input
+                    type="number"
+                    id="rows"
+                    value="4"
+                    min="1"
+                    max="10"
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="columns">Columns</label>
+                <input
+                    type="number"
+                    id="columns"
+                    value="5"
+                    min="1"
+                    max="10"
+                >
+            </div>
+
+            <button onclick="plantGarden()">
+                Plant Garden
+            </button>
+
+        </div>
+
+        <div id="garden" class="garden"></div>
+
+    </div>
+
+
+    <script>
+
+        function plantGarden() {
+
+            const rows =
+                parseInt(document.getElementById("rows").value);
+
+            const columns =
+                parseInt(document.getElementById("columns").value);
+
+            const garden =
+                document.getElementById("garden");
+
+            // Clear previous garden
+            garden.innerHTML = "";
+
+            // Set number of columns
+            garden.style.gridTemplateColumns =
+                `repeat(${columns}, 86px)`;
+
+            // Create fruits
+            for (let i = 0; i < rows * columns; i++) {
+
+                const fruit =
+                    document.createElement("div");
+
+                fruit.classList.add("fruit");
+
+                // Randomly choose apple or orange
+                if (Math.random() < 0.5) {
+                    fruit.classList.add("apple");
+                } else {
+                    fruit.classList.add("orange");
+                }
+
+                garden.appendChild(fruit);
+            }
+        }
+
+        // Create the default 4 × 5 garden
+        plantGarden();
+
+    </script>
+
+</body>
+</html>
