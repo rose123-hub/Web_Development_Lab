@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Font Size on Hover</title>
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #f5f7fa;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 90px;
+        }
+
+        .box {
+            background-color: white;
+            width: 380px;
+            padding: 28px;
+            border-radius: 6px;
+        }
+
+        h1 {
+            margin: 0 0 15px;
+            font-size: 20px;
+            color: #1f2937;
+        }
+
+        p {
+            margin: 0;
+            font-size: 14px;
+            color: #374151;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>Change Font Size</h1>
+
+        <p id="text"
+           onmouseover="increaseFont()"
+           onmouseout="decreaseFont()">
+            move cursor over me to zoom in...
+        </p>
+    </div>
+
+    <script>
+        function increaseFont() {
+            document.getElementById("text").style.fontSize = "24px";
+        }
+
+        function decreaseFont() {
+            document.getElementById("text").style.fontSize = "14px";
+        }
+    </script>
+
+</body>
+</html>

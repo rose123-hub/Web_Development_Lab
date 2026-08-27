@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moving Car</title>
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #f5f7fa;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 85px;
+        }
+
+        .box {
+            background-color: white;
+            width: 420px;
+            padding: 25px;
+            border-radius: 6px;
+        }
+
+        h1 {
+            font-size: 18px;
+            color: #1f2937;
+            margin: 0 0 25px;
+        }
+
+        .road {
+            height: 35px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #car {
+            position: absolute;
+            left: 0;
+            font-size: 25px;
+        }
+
+        button {
+            margin-top: 14px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #39749a;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2d5f7e;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>Moving Car</h1>
+
+        <div class="road">
+            <div id="car">🚗</div>
+        </div>
+
+        <button onclick="moveCar()">Move</button>
+        <button onclick="stopCar()">Stop</button>
+
+    </div>
+
+    <script>
+        let car = document.getElementById("car");
+        let position = 0;
+        let timer;
+
+        function moveCar() {
+            clearInterval(timer);
+
+            timer = setInterval(function() {
+                position += 2;
+
+                if (position > 390) {
+                    position = 0;
+                }
+
+                car.style.left = position + "px";
+            }, 50);
+        }
+
+        function stopCar() {
+            clearInterval(timer);
+        }
+    </script>
+
+</body>
+</html>

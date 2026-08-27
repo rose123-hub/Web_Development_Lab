@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Background</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #14849a;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background-color: white;
+            width: 240px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-size: 16px;
+            margin: 0 0 10px;
+            color: #1f2937;
+        }
+
+        p {
+            font-size: 10px;
+            color: #64748b;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>Dynamic Background</h1>
+        <p>The page background changes every 30 seconds.</p>
+    </div>
+
+    <script>
+        let colors = [
+            "#14849a",
+            "#4CAF50",
+            "#FF9800",
+            "#9C27B0",
+            "#2196F3"
+        ];
+
+        let index = 0;
+
+        function changeBackground() {
+            index++;
+
+            if (index >= colors.length) {
+                index = 0;
+            }
+
+            document.body.style.backgroundColor = colors[index];
+        }
+
+        setInterval(changeBackground, 30000);
+    </script>
+
+</body>
+</html>
