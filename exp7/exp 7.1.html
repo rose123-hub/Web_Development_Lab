@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cake Shop</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+  body { font-family: Arial; text-align: center; background: #fff8f0; }
+  h1 { background: #6a1b9a; color: white; padding: 10px; }
+  h2 { color: #d81b60; }
+  .cake { display: inline-block; width: 150px; margin: 10px; }
+  .cake .icon { font-size: 60px; }
+  label { color: #00796b; font-weight: bold; }
+  input { width: 60px; }
+  button { padding: 8px 20px; background: #d81b60; color: white; border: none; margin-top: 10px; border-radius: 5px; }
+  .bill { background: #00796b; color: white; padding: 10px; margin-top: 20px; }
+  .bill span { color: #d81b60; background: white; padding: 3px 10px; margin-left: 10px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<h1>CAKE SHOP</h1>
+
+<div class="cake">
+  <img src="colorcake.png" width="100">
+  <p>Color Cake - Rs.300</p>
+</div>
+<div class="cake">
+ <img src="browncake.png" width="100">
+  <p>Brown Cake - Rs.200</p>
+</div>
+<div class="cake">
+  <img src="milkycake.png" width="100">
+  <p>Milky Cake - Rs.250</p>
+</div>
+<div class="cake">
+  <img src="blackforest.png" width="100">
+  <p>Black Forest Cake - Rs.350</p>
+</div>
+
+<h2>Order Cake</h2>
+
+<label>Color Cake (Quantity)</label><br>
+<input type="text" id="colorQty" value="0"><br><br>
+
+<label>Brown Cake (Quantity)</label><br>
+<input type="text" id="brownQty" value="0"><br><br>
+
+<label>Milky Cake (Quantity)</label><br>
+<input type="text" id="milkyQty" value="0"><br><br>
+
+<label>Black Forest Cake (Quantity)</label><br>
+<input type="text" id="blackQty" value="0"><br><br>
+
+<button id="btnPlaceOrder">Place Order</button>
+
+<h3>Purchase Order Bill!!!</h3>
+<div class="bill">Total Price <span id="totalPrice">Rs.0</span></div>
+
+<script>
+$(document).ready(function(){
+
+  // price of each cake
+  var colorPrice = 300;
+  var brownPrice = 200;
+  var milkyPrice = 250;
+  var blackPrice = 350;
+
+  $("#btnPlaceOrder").click(function(){
+
+    var colorQty = Number($("#colorQty").val());
+    var brownQty = Number($("#brownQty").val());
+    var milkyQty = Number($("#milkyQty").val());
+    var blackQty = Number($("#blackQty").val());
+
+    var total = (colorQty * colorPrice) +
+                (brownQty * brownPrice) +
+                (milkyQty * milkyPrice) +
+                (blackQty * blackPrice);
+
+    $("#totalPrice").text("Rs." + total);
+
+  });
+
+});
+</script>
+
+</body>
+</html>
+

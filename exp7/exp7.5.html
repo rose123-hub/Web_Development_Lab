@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employee Management Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+  body { font-family: Arial; text-align: center; background: #fafafa; }
+  table { margin: 20px auto; border-collapse: collapse; width: 60%; }
+  th, td { border: 1px solid #90a4ae; padding: 8px; }
+  th { background: #37474f; color: white; }
+  .selected { background-color: #fff59d; }
+  #info {
+    width: 300px;
+    margin: 15px auto;
+    padding: 10px;
+    background: #eceff1;
+    border-radius: 6px;
+  }
+  input { padding: 5px; margin: 5px; }
+  button { padding: 6px 12px; margin: 5px; background: #00897b; color: white; border: none; border-radius: 4px; }
+  #status { color: #d81b60; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h2>Employee Management Dashboard</h2>
+
+<!-- Info / input panel -->
+<div id="info">
+  Employee ID: <input type="text" id="empId"><br>
+  Employee Name: <input type="text" id="empName"><br>
+  Department: <input type="text" id="empDept"><br>
+</div>
+
+<button id="btnAdd">Add Employee</button>
+<button id="btnUpdate">Update Employee</button>
+<button id="btnRemove">Remove Employee</button>
+<button id="btnChangeColor">Change Panel Color</button>
+<button id="btnDimensions">Show Table Dimensions</button>
+
+<p id="status"></p>
+
+<table id="empTable">
+  <tr>
+    <th>Employee ID</th>
+    <th>Employee Name</th>
+    <th>Department</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+<td>101</td><td>Riya</td><td>HR</td><td><button class="btnSelect">Select</button></td>
+  </tr>
+  <tr>
+<td>102</td><td>Arjun</td><td>IT</td><td><button class="btnSelect">Select</button></td>
+  </tr>
+  <tr>
+<td>103</td><td>Meera</td><td>Finance</td><td><button class="btnSelect">Select</button></td>
+  </tr>
+</table>
+
+<script>
+$(document).ready(function(){
+
+  var selectedRow = null; // keeps track of the currently selected row
+
+  // ----- jQuery Get: select a row and load its values -----
+  $("#empTable").on("click", ".btnSelect", function(){
+
+    // remove highlight from any previously selected row
+    $("tr").removeClass("selected");
+
+    // get the row that was clicked
+    var row = $(this).closest("tr");
+    row.addClass("selected"); // highlight it
+    selectedRow = row;
+
+    // get() values from the cells and set() them into text boxes
+    var id = row.find("td").eq(0).text();
+    var name = row.find("td").eq(1).text();
+    var dept = row.find("td").eq(2).text();
+
+    $("#empId").val(id);
+    $("#empName").val(name);
+    $("#empDept").val(dept);
+
+    $("#status").text("Selected employee details loaded.");
+  });
+
+  // ----- jQuery Add: add a new employee row -----
+  $("#btnAdd").click(function(){
+
+    var id = $("#empId").val();
+    var name = $("#empName").val();
+    var dept = $("#empDept").val();
+
+    if (id === "" || name === "" || dept === "") {
+      alert("Please fill all fields before adding.");
+      return;
+    }
+
+    var newRow = "<tr><td>" + id + "</td><td>" + name + "</td><td>" + dept +
+                 "</td><td><button class='btnSelect'>Select</button></td></tr>";
+
+    $("#empTable").append(newRow);
+    $("#status").text("Employee added successfully.");
+  });
+
+  // ----- jQuery Set: update the selected employee row -----
+  $("#btnUpdate").click(function(){
+
+    if (selectedRow === null) {
+      alert("Please select an employee first.");
+      return;
+    }
+
+    var id = $("#empId").val();
+    var name = $("#empName").val();
+    var dept = $("#empDept").val();
+
+    selectedRow.find("td").eq(0).text(id);
+    selectedRow.find("td").eq(1).text(name);
+    selectedRow.find("td").eq(2).text(dept);
+
+    $("#status").text("Employee updated successfully.");
+  });
+
+  // ----- jQuery Remove: delete the selected row -----
+  $("#btnRemove").click(function(){
+
+    if (selectedRow === null) {
+      alert("Please select an employee first.");
+      return;
+    }
+
+    selectedRow.remove();
+    selectedRow = null;
+    $("#status").text("Employee removed successfully.");
+  });
+
+  // ----- jQuery css(): change info panel background color -----
+  $("#btnChangeColor").click(function(){
+    $("#info").css("background-color", "#b2dfdb");
+  });
+
+  // ----- jQuery Dimensions: show table width and height -----
+  $("#btnDimensions").click(function(){
+    var w = $("#empTable").width();
+    var h = $("#empTable").height();
+    alert("Table Width: " + w + "px, Table Height: " + h + "px");
+  });
+
+});
+</script>
+
+</body>
+</html>

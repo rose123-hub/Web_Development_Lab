@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Budget Calculator App</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+  body { font-family: Arial; text-align: center; background: #fdf6ec; }
+  h2 { background: #4b0082; color: white; padding: 10px; }
+  input { width: 80px; padding: 5px; }
+  button { padding: 8px 15px; background: #ff6f00; color: white; border: none; margin-top: 15px; border-radius: 5px; }
+  .boxes { margin-top: 20px; }
+  .box { display: inline-block; width: 100px; padding: 10px; color: white; margin: 5px; border-radius: 6px; }
+</style>
+</head>
+<body>
+
+<h2>Budget Calculator App</h2>
+
+<p>Enter Amount that you want to Manage</p>
+<input type="text" id="amount"><br><br>
+<p>How would you like to divide your money?</p>
+Room Rent(%): <input type="text" id="rent">
+Accessories(%): <input type="text" id="accessories">
+Emergency(%): <input type="text" id="emergency">
+Saving(%): <input type="text" id="saving">
+<br>
+<button id="btnEvaluate">Evaluate My Money</button>
+<div class="boxes">
+  <div class="box" style="background-color:#4b0082;">Room Rent<br>Rs.<span id="rentResult">0</span></div>
+  <div class="box" style="background-color:#00796b;">Accessories<br>Rs.<span id="accessoriesResult">0</span></div>
+  <div class="box" style="background-color:#c2185b;">Emergency<br>Rs.<span id="emergencyResult">0</span></div>
+  <div class="box" style="background-color:#ff6f00;">Saving<br>Rs.<span id="savingResult">0</span></div>
+</div>
+<script>
+$(document).ready(function(){
+
+  $("#btnEvaluate").click(function(){
+    var amount = Number($("#amount").val());
+    var rent = Number($("#rent").val());
+    var accessories = Number($("#accessories").val());
+    var emergency = Number($("#emergency").val());
+    var saving = Number($("#saving").val());
+    var total = rent + accessories + emergency + saving;
+    if (total !== 100) {
+      alert("Percentages do not add up to 100! Please check your values.");
+      return;
+    }
+    var rentAmount = (amount * rent) / 100;
+    var accessoriesAmount = (amount * accessories) / 100;
+    var emergencyAmount = (amount * emergency) / 100;
+    var savingAmount = (amount * saving) / 100;
+    $("#rentResult").text(rentAmount);
+    $("#accessoriesResult").text(accessoriesAmount);
+    $("#emergencyResult").text(emergencyAmount);
+    $("#savingResult").text(savingAmount);
+
+  });
+});
+</script>
+</body>
+</html>
