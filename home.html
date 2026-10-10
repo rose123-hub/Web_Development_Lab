@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 30px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            background-color: white;
+            width: 350px;
+            max-width: 100%;
+            padding: 20px;
+            margin: auto;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 7px 0 12px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #218838;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #19692c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>User Registration Form</h2>
+
+    <form action="/server" method="POST">
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"
+               minlength="8" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age"
+               min="1" required>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile"
+               pattern="[0-9]{10}"
+               title="Enter a 10-digit mobile number"
+               required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required>
+
+        <label for="skills">Skills:</label>
+        <input type="text" id="skills" name="skills" required>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+</body>
+</html>
